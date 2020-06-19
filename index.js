@@ -7,7 +7,7 @@
 var p = 200000;
 var i = 0.05;
 var y = 30;
-var name = 'Julius';
+var name = prompt("Please enter your name");
 
 
 // 🏡 Task 1.5: Simple Math
@@ -103,7 +103,7 @@ function mortgageCalculator(P, I, N, cS){
     var numerator = P * n1 * monthlyInterestRate;
     var denominator = n1 - 1;
     var monthlyRate= numerator/denominator;
-    return   console.log(name + ', your monthly rate is ' + monthlyRate);
+    return   console.log(name + ', your monthly rate is ' + monthlyRate + ' with that particular credit score');
 }
 
 
@@ -125,15 +125,18 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 function variableInterestRate(P, I, N){
     var y = N;
     var periods = y * 12;
-    var I;
-    var monthlyInterestRate = I / 12;
-    var n1 = Math.pow(1 + monthlyInterestRate, periods);
-    var numerator = P * n1 * monthlyInterestRate;
-    var denominator = n1 - 1;
-    var monthlyRate= numerator/denominator;
+    Number(I);
+    I -= 0.02;
     for (let i = 0; i < 10; i++) {
-        return console.log(name + ', with an intrest rate of ' + I + ' your monthly rate is ' + monthlyRate);
+        var monthlyInterestRate = I / 12;
+        var n1 = Math.pow(1 + monthlyInterestRate, periods);
+        var numerator = P * n1 * monthlyInterestRate;
+        var denominator = n1 - 1;
+        var monthlyRate = numerator/denominator;
+        console.log(name + ', with an intrest rate of ' + I + ' your monthly rate is ' + monthlyRate);
+        I = I + 0.005;   
     }
+
 }
 
 
@@ -148,6 +151,13 @@ function variableInterestRate(P, I, N){
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+
+var P = prompt("Please enter your principal for the loan");
+var I = prompt("Please enter your intrest rate for the loan");
+var N = prompt("Please enter your number of years of the loan");
+var cS = prompt("Please enter your credit credit score");
+mortgageCalculator(P, I, N, cS);
+variableInterestRate(P, I, N);
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
